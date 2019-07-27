@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
+import Result from './Result.js'
 import Paper from '@material-ui/core/Paper';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
+import Snackbar from '@material-ui/core/Snackbar';
+import SnackbarContent from '@material-ui/core/SnackbarContent';
 
 
 class Search extends Component {
@@ -11,15 +14,37 @@ class Search extends Component {
     super();
     this.state = {
       category: '',
-      keyword: ''
+      keyword: '',
+      warning: false,
+      results: []
     }
   }
 
-  handleChange= (ev) => {
+  handleChange = (ev) => {
     this.setState({[ev.target.name]: ev.target.value})
   }
 
+  handleSubmit = (ev) => {
 
+    // if (this.state.category === '' || this.state.keyword === '') {
+    //   this.setState({
+    //     warning: true
+    //   })
+    // }
+    ev.preventDefault()
+    fetch(`https://pixabay.com/api/?key=13136421-266c28a6d61717bc2e4e6a83e&q=${this.state.keyword}&image_type=photo&category=${this.state.category}`)
+    .then(response => response.json())
+    .then( result => {
+      this.setState({
+        results: result.hits
+      })
+    })
+  }
+
+  // maybe for error popup
+  // { this.state.warning ? (
+  //   <SnackbarContent message="warning" />
+  // ) : ( null )}
   render() {
     return (
       <main>
@@ -111,6 +136,7 @@ class Search extends Component {
                 </TextField>
                 <Button
                   type="submit"
+                  onClick={this.handleSubmit}
                   sizeLarge
                   color="primary"
                   variant="contained"
@@ -120,6 +146,7 @@ class Search extends Component {
             </FormControl>
           </form>
         </Paper>
+
       </main>
     )
   }
