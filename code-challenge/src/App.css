@@ -1,7 +1,19 @@
 .App {
   text-align: center;
+  height: 100vh;
 }
 
 .search {
-  height: 100vh;
+  height: 30vh;
+}
+
+.resultIMG {
+  max-width: 150px;
+  max-height: 100px;
+  justify: center;
+}
+
+.result {
+  display: flex;
+  flex-direction: column;
 }

@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import Result from './Result.js'
+import React, { Fragment } from 'react'
+import Result from '../Components/Result.js'
 import Paper from '@material-ui/core/Paper';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
@@ -9,46 +9,12 @@ import Snackbar from '@material-ui/core/Snackbar';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 
 
-class Search extends Component {
-  constructor() {
-    super();
-    this.state = {
-      category: '',
-      keyword: '',
-      warning: false,
-      results: []
-    }
-  }
+  const Search = (props) => {
 
-  handleChange = (ev) => {
-    this.setState({[ev.target.name]: ev.target.value})
-  }
 
-  handleSubmit = (ev) => {
 
-    // if (this.state.category === '' || this.state.keyword === '') {
-    //   this.setState({
-    //     warning: true
-    //   })
-    // }
-    ev.preventDefault()
-    fetch(`https://pixabay.com/api/?key=13136421-266c28a6d61717bc2e4e6a83e&q=${this.state.keyword}&image_type=photo&category=${this.state.category}`)
-    .then(response => response.json())
-    .then( result => {
-      this.setState({
-        results: result.hits
-      })
-    })
-  }
-
-  // maybe for error popup
-  // { this.state.warning ? (
-  //   <SnackbarContent message="warning" />
-  // ) : ( null )}
-  render() {
     return (
       <main>
-        <Paper>
           <form className="search">
             <FormControl >
               <TextField
@@ -58,8 +24,8 @@ class Search extends Component {
                 name="keyword"
                 autoComplete="keyword"
                 margin="normal"
-                value={this.state.keyword}
-                onChange={this.handleChange}
+                value={props.keyword}
+                onChange={props.handleChange}
                 variant="outlined"
                 />
 
@@ -70,8 +36,8 @@ class Search extends Component {
                   label="Category..."
                   name="category"
                   margin="normal"
-                  value={this.state.category}
-                  onChange={this.handleChange}
+                  value={props.category}
+                  onChange={props.handleChange}
                   >
                   <MenuItem key='fashion' value='fashion'>
                     Fashion
@@ -136,7 +102,7 @@ class Search extends Component {
                 </TextField>
                 <Button
                   type="submit"
-                  onClick={this.handleSubmit}
+                  onClick={props.handleSubmit}
                   sizeLarge
                   color="primary"
                   variant="contained"
@@ -145,11 +111,10 @@ class Search extends Component {
                 </Button>
             </FormControl>
           </form>
-        </Paper>
 
       </main>
     )
-  }
+
 }
 
 export default Search;
