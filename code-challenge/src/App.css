@@ -17,6 +17,11 @@
   height: 20px;
 }
 
+.saved {
+  justify: left;
+  alignItems: left;
+}
+
 .result {
   display: flex;
   flex-direction: column;

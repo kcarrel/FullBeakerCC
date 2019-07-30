@@ -64,14 +64,14 @@ import Chip from '@material-ui/core/Chip';
             })}
             <Grid container
               direction="row"
-              alignItems="center"
-              xs={6}
+              alignItems="flex-end"
+              style={{ height: 60}}
             >
-              <a>{props.result.favorites}</a>
+              <a fontSize="5px">{props.result.favorites}</a>
               <StarIcon  style={{ fontSize: 15}} />
 
 
-                <a>{props.result.likes}</a>
+                <a fontSize="5px">{props.result.likes}</a>
                 <ThumbIcon style={{ fontSize: 10 }} />
                 </Grid>
 
