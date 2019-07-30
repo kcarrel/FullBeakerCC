@@ -27,20 +27,29 @@ import Chip from '@material-ui/core/Chip';
             src={props.result.previewURL}
             id="picture"
             />
+          { props.savedId.includes(props.result.id) ?  (
             <Button
-                type="submit"
-                sizeLarge
                 color="primary"
+                className="save"
+                >
+                Saved
+            </Button>) : (<Button
+                type="submit"
+                color="primary"
+                className="save"
                 value={props.result.pageURL}
                 onClick={(ev) => props.handleSave(ev, props.result)}
                 >
                 Save
             </Button>
+            )}
           </Grid>
 
           <Grid container
             direction="column"
             alignItems="center"
+            height="200px"
+            width="100px"
             xs={6}
           >
           <Grid item

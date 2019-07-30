@@ -14,6 +14,7 @@ import Grid from '@material-ui/core/Grid';
               {
                 props.results.map(result => {
                   return <Result
+                  savedId={props.savedId}
                   key={result.id}
                   result={result}
                   handleSave={props.handleSave}

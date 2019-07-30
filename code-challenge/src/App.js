@@ -12,7 +12,8 @@ class App extends Component {
       category: '',
       keyword: '',
       results: [],
-      saved: []
+      saved: [],
+      savedId: []
     }
     this.handleSave = this.handleSave.bind(this)
   }
@@ -35,8 +36,10 @@ class App extends Component {
   handleSave = (ev, save) => {
     ev.preventDefault()
     this.state.saved.push(save)
+    this.state.savedId.push(save.id)
     this.setState({
-      saved: this.state.saved
+      saved: this.state.saved,
+      savedId: this.state.savedId
     })
   }
 
@@ -54,6 +57,7 @@ class App extends Component {
               />
 
             <ResultsContainer
+              savedId={this.state.savedId}
               results={this.state.results}
               handleSave={this.handleSave}
               />
