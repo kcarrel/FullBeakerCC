@@ -43,23 +43,25 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Search
-          keyword={this.state.keyword}
-          category={this.state.category}
-          handleSubmit={this.handleSubmit}
-          handleChange={this.handleChange}
-          />
         <Grid container spacing={3}>
+          <Grid item xs={6}>
 
-          <Grid item xs={12} sm={6}>
+            <Search
+              keyword={this.state.keyword}
+              category={this.state.category}
+              handleSubmit={this.handleSubmit}
+              handleChange={this.handleChange}
+              />
+
             <ResultsContainer
               results={this.state.results}
-              handleSave={this.handleSave}/>
+              handleSave={this.handleSave}
+              />
           </Grid>
+
           <Grid
             item
-            xs={12}
-            sm={6}
+            xs={6}
             >
             <SavedContainer
               saved={this.state.saved}

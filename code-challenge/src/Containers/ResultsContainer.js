@@ -7,7 +7,10 @@ import Grid from '@material-ui/core/Grid';
     return (
       <Fragment>
         <div className="results">
-          <Grid container  direction="column" justify="center" alignItems="center">
+          <Grid container
+            direction="column"
+            justify="center"
+            alignItems="center">
               {
                 props.results.map(result => {
                   return <Result
