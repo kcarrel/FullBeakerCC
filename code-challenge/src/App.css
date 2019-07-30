@@ -17,3 +17,12 @@
   display: flex;
   flex-direction: column;
 }
+
+.saved {
+  display: flex;
+  flex-direction: column;
+}
+
+.save {
+   color: #75BCB;
+}

@@ -24,6 +24,7 @@ import Grid from '@material-ui/core/Grid';
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
                 <a>{props.result.favorites}</a>
+                
                 <StarIcon  style={{ fontSize: 15 }} />
                 <a>{props.result.likes}</a>
                 <ThumbIcon style={{ fontSize: 10 }} />
@@ -31,6 +32,8 @@ import Grid from '@material-ui/core/Grid';
                       type="submit"
                       sizeLarge
                       color="primary"
+                      value={props.result.pageURL}
+                      onClick={(ev) => props.handleSave(ev, props.result)}
                       >
                       Save
                   </Button>

@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Search from './Containers/Search'
+import SavedContainer from './Containers/SavedContainer'
 import ResultsContainer from './Containers/ResultsContainer'
+import Grid from '@material-ui/core/Grid';
 import './App.css';
 
 class App extends Component {
@@ -12,6 +14,7 @@ class App extends Component {
       results: [],
       saved: []
     }
+    this.handleSave = this.handleSave.bind(this)
   }
 
   handleChange = (ev) => {
@@ -29,6 +32,14 @@ class App extends Component {
     })
   }
 
+  handleSave = (ev, save) => {
+    ev.preventDefault()
+    this.state.saved.push(save)
+    this.setState({
+      saved: this.state.saved
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -38,8 +49,23 @@ class App extends Component {
           handleSubmit={this.handleSubmit}
           handleChange={this.handleChange}
           />
-        <ResultsContainer
-          results={this.state.results}/>
+        <Grid container spacing={3}>
+
+          <Grid item xs={12} sm={6}>
+            <ResultsContainer
+              results={this.state.results}
+              handleSave={this.handleSave}/>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            >
+            <SavedContainer
+              saved={this.state.saved}
+              />
+          </Grid>
+        </Grid>
       </div>
     );
   }

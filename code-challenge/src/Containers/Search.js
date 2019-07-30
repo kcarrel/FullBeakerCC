@@ -1,12 +1,8 @@
-import React, { Fragment } from 'react'
-import Result from '../Components/Result.js'
-import Paper from '@material-ui/core/Paper';
+import React from 'react'
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
-import Snackbar from '@material-ui/core/Snackbar';
-import SnackbarContent from '@material-ui/core/SnackbarContent';
 
 
   const Search = (props) => {
