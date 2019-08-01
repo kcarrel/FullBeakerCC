@@ -6,9 +6,6 @@ import Button from '@material-ui/core/Button';
 
 
   const Search = (props) => {
-
-
-
     return (
       <main>
           <form className="search">
@@ -25,16 +22,16 @@ import Button from '@material-ui/core/Button';
                 variant="outlined"
                 />
 
-                <TextField
-                  id="category"
-                  select
-                  variant="outlined"
-                  label="Category..."
-                  name="category"
-                  margin="normal"
-                  value={props.category}
-                  onChange={props.handleChange}
-                  >
+              <TextField
+                id="category"
+                select
+                variant="outlined"
+                label="Category..."
+                name="category"
+                margin="normal"
+                value={props.category}
+                onChange={props.handleChange}
+                >
                   <MenuItem key='fashion' value='fashion'>
                     Fashion
                   </MenuItem>
@@ -107,10 +104,8 @@ import Button from '@material-ui/core/Button';
                 </Button>
             </FormControl>
           </form>
-
       </main>
     )
-
 }
 
 export default Search;

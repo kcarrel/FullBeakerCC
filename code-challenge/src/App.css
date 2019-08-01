@@ -20,7 +20,6 @@
 
 .savedContainer {
   justify: left;
-  alignItems: left;
 }
 
 .header {
@@ -37,12 +36,8 @@
   flex-direction: column;
 }
 
-.save {
-   color: #75BCB;
-}
-
 .savedNote {
-    color: #75BCB !important;
+    color: #7221A7;
     width: 200px;
     height: 50px;
     text-align: left;
