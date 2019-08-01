@@ -6,8 +6,8 @@ import Saved from '../Components/Saved'
 
     return (
       <Fragment>
-        <div className="saved">
-          { props.saved.length > 0 ? <h1>Saved</h1>  : null }
+        <div className="savedContainer">
+          { props.saved.length > 0 ? <h1 className="header">Saved</h1>  : null }
           <Grid container  direction="column" justify="left" alignItems="left">
             {
               props.saved.map(save => {

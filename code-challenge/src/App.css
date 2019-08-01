@@ -14,12 +14,17 @@
 
 .save {
   width: 200px;
-  height: 20px;
+  height: 50px;
+  text-align: left;
 }
 
-.saved {
+.savedContainer {
   justify: left;
   alignItems: left;
+}
+
+.header {
+  text-align: left;
 }
 
 .result {
@@ -34,4 +39,11 @@
 
 .save {
    color: #75BCB;
+}
+
+.savedNote {
+    color: #75BCB !important;
+    width: 200px;
+    height: 50px;
+    text-align: left;
 }

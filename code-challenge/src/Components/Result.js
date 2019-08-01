@@ -6,14 +6,28 @@ import StarIcon from '@material-ui/icons/StarRounded';
 import ThumbIcon from '@material-ui/icons/ThumbUpRounded';
 import Grid from '@material-ui/core/Grid';
 import Chip from '@material-ui/core/Chip';
+import { pink, orange } from '@material-ui/core/colors';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
+import withStyles from '@material-ui/core/styles/withStyles';
+
+const buttonTheme = createMuiTheme({
+  palette: {
+    secondary: orange,
+    primary: pink
+  }
+ })
+
 
 
   const Result = (props) => {
 
+
+
     let tags = props.result.tags.split(",")
 
     return (
-      <Card style={{width: 400, height:150, display: "center", margin: 5}} className="result">
+      <Card style={{width: 400, height:150, display: "center", margin: 5, padding: 20}} className="result">
         <Grid container
           direction="column"
           justify="center"
@@ -28,20 +42,29 @@ import Chip from '@material-ui/core/Chip';
             id="picture"
             />
           { props.savedId.includes(props.result.id) ?  (
+              <Button
+                  sizeLarge
+                  color="secondary"
+                  className="save"
+                  variant="contained"
+
+                  >
+                  Saved
+              </Button>
+          ) : (
+            <ThemeProvider theme={buttonTheme}>
             <Button
-                color="primary"
-                className="save"
-                >
-                Saved
-            </Button>) : (<Button
                 type="submit"
-                color="primary"
                 className="save"
+                color="primary"
                 value={props.result.pageURL}
+                variant="contained"
                 onClick={(ev) => props.handleSave(ev, props.result)}
                 >
                 Save
             </Button>
+          </ThemeProvider>
+
             )}
           </Grid>
 
@@ -50,6 +73,7 @@ import Chip from '@material-ui/core/Chip';
             alignItems="center"
             height="200px"
             width="100px"
+            style={{marginLeft: 10}}
             xs={6}
           >
           <Grid item
@@ -59,7 +83,7 @@ import Chip from '@material-ui/core/Chip';
                 size="small"
                 color="primary"
                 label={tag}
-                margin="auto"
+                style={{ marginBottom: 5, marginRight: 5}}
                 />
             })}
             <Grid container
@@ -67,13 +91,16 @@ import Chip from '@material-ui/core/Chip';
               alignItems="flex-end"
               style={{ height: 60}}
             >
+            <Grid item xs={6}>
               <a fontSize="5px">{props.result.favorites}</a>
               <StarIcon  style={{ fontSize: 15}} />
-
+            </Grid>
+            <Grid item xs={6}>
 
                 <a fontSize="5px">{props.result.likes}</a>
                 <ThumbIcon style={{ fontSize: 10 }} />
                 </Grid>
+              </Grid>
 
               </Grid>
             </Grid>

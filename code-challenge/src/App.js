@@ -24,7 +24,8 @@ class App extends Component {
 
   handleSubmit = (ev) => {
     ev.preventDefault()
-    fetch(`https://pixabay.com/api/?key=13136421-266c28a6d61717bc2e4e6a83e&q=${this.state.keyword}&image_type=photo&category=${this.state.category}`)
+    let query = this.state.keyword.replace(/\s+/g,' ').trim()
+    fetch(`https://pixabay.com/api/?key=13136421-266c28a6d61717bc2e4e6a83e&q=${query}&image_type=photo&category=${this.state.category}`)
     .then(response => response.json())
     .then( result => {
       this.setState({
